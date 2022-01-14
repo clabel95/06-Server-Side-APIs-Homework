@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Weather Dashboard</title>
+     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
+    rel="stylesheet" />
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <body>
+
+<div class= "row">
+  <div class = "col s3">
+    <div id = "city_search_and_history">
+      <form id="search-form" class="form">
+          <h1>Search for a City:</h1>
+          <input type="text" id="input" placeholder="Austin" name="city" maxlength="100"/>
+          <button id="Search" type="submit">Search</button>
+      </form>
+      <!-- append the recent searched cities here as a button -->
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <div class = "col s9">
+    <!-- right side of the screen that will hold the forcast. -->
+    <div id = "forcast">
+      <!-- current forcast goes here -->
+      <div id = "current">
+        <h2 id = "city_date">City (current date)</h2>
+        <p>Temp: <span     id = "current_temp"    >cold </span> deg F</p>
+        <p>Wind: <span     id = "current_wind"    >calm </span> MPH</p>
+        <p>Humidity: <span id = "current_humidity">20%  </span> %</p>
+        <p>UV Index: <span id = "current_UV"      >0.34 </span> </p>
+      </div>
+
+      <!-- five day forcast goes here -->
+      <h3>5-Day Forecast:</h3>
+      <div id ="five_day" class="row">
+        <div id = "day_1" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
+          <h4 id = "day_1_date">date</h4>
+          <!-- icon here -->
+          <ion-icon id = "day_1_icon" name="cloudy" style="font-size:30px; color: white;"></ion-icon>
+          <p id = "day_1_temp">temp</p>
+          <p id = "day_1_wind">wind</p>
+          <p id = "day_1_humidity">humid</p>
+        </div>
+        <div id = "day_2" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
+          <h4 id = "day_2_date">date</h4>
+          <!-- icon here -->
+          <ion-icon id = "day_2_icon" name="rainy" style="font-size:30px; color: #636060;"></ion-icon>
+          <p id = "day_2_temp">temp</p>
+          <p id = "day_2_wind">wind</p>
+          <p id = "day_2_humidity">humid</p>
+        </div>
+        <div id = "day_3" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
+          <h4 id = "day_3_date">date</h4>
+          <!-- icon here -->
+          <ion-icon id = "day_3_icon" name="sunny" style="font-size:30px; color:orange"></ion-icon>
+          <p id = "day_3_temp">temp</p>
+          <p id = "day_3_wind">wind</p>
+          <p id = "day_3_humidity">humid</p>
+        </div>
+        <div id = "day_4" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
+          <h4 id = "day_4_date">date</h4>
+          <!-- icon here -->
+          <ion-icon id = "day_4_icon" name="thunderstorm" style="font-size:30px; color: #636060;"></ion-icon>
+          <p id = "day_4_temp">temp</p>
+          <p id = "day_4_wind">wind</p>
+          <p id = "day_4_humidity">humid</p>
+        </div>
+        <div id = "day_5" class = "card-panel #5c6bc0 indigo lighten-1 col s2">
+          <h4 id = "day_5_date">date</h4>
+          <!-- icon here -->
+          <ion-icon id = "day_5_icon" name="cloudy" style="font-size:30px; color: white;"></ion-icon>
+          <p id = "day_5_temp">temp</p>
+          <p id = "day_5_wind">wind</p>
+          <p id = "day_5_humidity">humid</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+    
+  
+  
+
+
+    <script src="./assets/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  </body>
+</html>
