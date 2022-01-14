@@ -1,4 +1,4 @@
-# 05 Third-Party APIs: Work Day Scheduler
+# 06 Server Side APIs: Weather Dashboard
 [Link to the live page](https://clabel95.github.io/06-Server-Side-APIs-Homework/)
 
 
