@@ -1,6 +1,6 @@
 //set the text in the input to be whatever is stored in local storage.
 
-document.getElementById("input").value = localStorage.getItem("Search_City");
+//document.getElementById("input").value = localStorage.getItem("Search_City");
 
 //initialize and define all variables 
 var Search_City = "";
@@ -43,6 +43,16 @@ var d5_icon = document.getElementById("day_5_icon");
 var d5_temp = document.getElementById("day_5_temp");
 var d5_wind = document.getElementById("day_5_wind");
 var d5_humi = document.getElementById("day_5_humidity");
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  for (i = 0; i < localStorage.getItem("total_saved_searches"); i ++){
+    remake_buttons(localStorage.getItem(i));
+  }
+});
+
+
+
+
 
 document.querySelector("#Search").addEventListener("click", function(event){
   event.preventDefault();
@@ -92,24 +102,28 @@ document.querySelector("#Search").addEventListener("click", function(event){
             },
             error: function(xhr, ajaxOptions, thrownError){ 
               console.log(xhr.status); 
-              console.log(thrownError);}
-            }); 
-          };
-          
-          
+              console.log(thrownError);
+            }
+          }); 
+        };   
         var container = document.getElementById("container");
         container.appendChild(btn);
         var total_btns = document.getElementById("container").childNodes;
         var rem_btn = document.getElementById("container");
-
         if(total_btns.length > 6){
           rem_btn.removeChild(rem_btn.firstChild)
         }
-
-
-
+        localStorage.setItem("total_saved_searches",rem_btn.childNodes.length)
+        for (i = 0; i < localStorage.getItem("total_saved_searches"); i++){
+          localStorage.setItem(i, rem_btn.childNodes[i].innerHTML)
         }
+      }
+    
       
+      
+      
+
+
       localStorage.setItem(Search_City+"lat",result.coord.lat);
       localStorage.setItem(Search_City+"lon",result.coord.lon);
 
@@ -131,15 +145,15 @@ function get_weather(){
 	  dataType: "JSON",
 	  success: function(result)
 	  {
-      console.log(result);
+      //console.log(result);
       today_city.innerHTML = Search_City.toUpperCase() +" "+ moment(result.current.dt, 'X' ).format('M/D/YYYY');
-      console.log(result.current.temp);
+      //console.log(result.current.temp);
       today_temp.innerHTML = result.current.temp;
-      console.log(result.current.wind_speed);
+      //console.log(result.current.wind_speed);
       today_wind.innerHTML = result.current.wind_speed;
-      console.log(result.current.humidity);
+      //console.log(result.current.humidity);
       today_humidity.innerHTML = result.current.humidity;
-      console.log("uv " + parseInt(result.current.uvi) );
+      //console.log("uv " + parseInt(result.current.uvi) );
       today_uv.innerHTML = result.current.uvi;
 
 
@@ -162,75 +176,75 @@ function get_weather(){
 
       today_icon.src = "http://openweathermap.org/img/wn/"+ result.current.weather[0].icon +"@2x.png"
       
-      console.log("--------------------------")
+      //console.log("--------------------------")
       //Day 1-------------------------------------------------------------------------------
-      console.log(result.daily[1].dt);
+      //console.log(result.daily[1].dt);
       d1_date.innerHTML = moment(result.daily[1].dt , 'X').format('M/D/YYYY');
-      console.log(result.daily[1].weather[0].main);
+      //console.log(result.daily[1].weather[0].main);
       // d1_icon. not sure how to change the icon yet.------------------------------------
       d1_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[1].weather[0].icon +".png"
-      console.log(result.daily[1].temp.day);
+      //console.log(result.daily[1].temp.day);
       d1_temp.innerHTML = "Temp: "+result.daily[1].temp.day + "°F";
-      console.log(result.daily[1].wind_speed);
+      //console.log(result.daily[1].wind_speed);
       d1_wind.innerHTML = "Wind: "+result.daily[1].wind_speed +" MPH";
-      console.log(result.daily[1].humidity);
+      //console.log(result.daily[1].humidity);
       d1_humi.innerHTML = "Humidity: "+result.daily[1].humidity +"%";
       //------------------------------------------------------------------------------------
       
-      console.log("--------------------------")
+      //console.log("--------------------------")
       
       //Day 2-------------------------------------------------------------------------------
-      console.log(result.daily[2].dt);
+      //console.log(result.daily[2].dt);
       d2_date.innerHTML = moment(result.daily[2].dt , 'X').format('M/D/YYYY');
-      console.log(result.daily[2].weather[0].main);
+      //console.log(result.daily[2].weather[0].main);
       // d2_icon. not sure how to change the icon yet.------------------------------------
       d2_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[2].weather[0].icon +".png"
-      console.log(result.daily[2].temp.day);
+      //console.log(result.daily[2].temp.day);
       d2_temp.innerHTML = "Temp: "+result.daily[2].temp.day + "°F";
-      console.log(result.daily[2].wind_speed);
+      //console.log(result.daily[2].wind_speed);
       d2_wind.innerHTML = "Wind: "+result.daily[2].wind_speed +" MPH";
-      console.log(result.daily[2].humidity);
+      //console.log(result.daily[2].humidity);
       d2_humi.innerHTML = "Humidity: "+result.daily[2].humidity +"%";
       //------------------------------------------------------------------------------------
 
       //Day 3-------------------------------------------------------------------------------
-      console.log(result.daily[3].dt);
+      //console.log(result.daily[3].dt);
       d3_date.innerHTML = moment(result.daily[3].dt , 'X').format('M/D/YYYY');
-      console.log(result.daily[3].weather[0].main);
+      //console.log(result.daily[3].weather[0].main);
       // d3_icon. not sure how to change the icon yet.------------------------------------
       d3_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[3].weather[0].icon +".png"
-      console.log(result.daily[3].temp.day);
+      //console.log(result.daily[3].temp.day);
       d3_temp.innerHTML = "Temp: "+result.daily[3].temp.day + "°F";
-      console.log(result.daily[3].wind_speed);
+      //console.log(result.daily[3].wind_speed);
       d3_wind.innerHTML = "Wind: "+result.daily[3].wind_speed +" MPH";
-      console.log(result.daily[3].humidity);
+      //console.log(result.daily[3].humidity);
       d3_humi.innerHTML = "Humidity: "+result.daily[3].humidity +"%";
       //------------------------------------------------------------------------------------
 
       //Day 4-------------------------------------------------------------------------------
-      console.log(result.daily[4].dt);
+      //console.log(result.daily[4].dt);
       d4_date.innerHTML = moment(result.daily[4].dt , 'X').format('M/D/YYYY');
-      console.log(result.daily[4].weather[0].main);
+      //console.log(result.daily[4].weather[0].main);
       // d4_icon. not sure how to change the icon yet.------------------------------------
       d4_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[4].weather[0].icon +".png"
-      console.log(result.daily[4].temp.day);
+      //console.log(result.daily[4].temp.day);
       d4_temp.innerHTML = "Temp: "+result.daily[4].temp.day + "°F";
-      console.log(result.daily[4].wind_speed);
+      //console.log(result.daily[4].wind_speed);
       d4_wind.innerHTML = "Wind: "+result.daily[4].wind_speed +" MPH";
-      console.log(result.daily[4].humidity);
+      //console.log(result.daily[4].humidity);
       d4_humi.innerHTML = "Humidity: "+result.daily[4].humidity +"%";
       //------------------------------------------------------------------------------------
 
       //Day 5-------------------------------------------------------------------------------
-      console.log(result.daily[5].dt);
+      //console.log(result.daily[5].dt);
       d5_date.innerHTML = moment(result.daily[5].dt , 'X').format('M/D/YYYY');
-      console.log(result.daily[5].weather[0].main);
+      //console.log(result.daily[5].weather[0].main);
       d5_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[5].weather[0].icon +".png" 
-      console.log(result.daily[5].temp.day);
+      //console.log(result.daily[5].temp.day);
       d5_temp.innerHTML = "Temp: "+result.daily[5].temp.day + "°F";
-      console.log(result.daily[5].wind_speed);
+      //console.log(result.daily[5].wind_speed);
       d5_wind.innerHTML = "Wind: "+result.daily[5].wind_speed +" MPH";
-      console.log(result.daily[5].humidity);
+      //console.log(result.daily[5].humidity);
       d5_humi.innerHTML = "Humidity: "+result.daily[5].humidity +"%";
       //------------------------------------------------------------------------------------
 
@@ -242,6 +256,45 @@ function get_weather(){
     console.log(thrownError);}
   });
 
+}
+
+
+function remake_buttons(names){
+  var btn = document.createElement("button");
+  btn.type = "button";
+  // Search_City = result.
+  btn.innerHTML = names;
+  btn.id = names.toUpperCase();
+  btn.className = "btn grey";
+  btn.style.width = "100%";
+  btn.style.margin = "5px";
+
+  btn.onclick = function(){
+    event.preventDefault();
+    //localStorage.setItem("Search_City", btn.value);
+          
+    //Search_City = this.value;
+    console.log("-----------------------")
+    console.log($(this)[0].innerHTML);
+    console.log("-----------------------")
+    Search_City = $(this)[0].innerHTML
+    $.ajax({
+      url: "https://salty-mountain-68764.herokuapp.com/api.openweathermap.org/data/2.5/weather?q=" + $(this)[0].innerHTML + "&appid=59a63259df023b7597639c43e89ae417&units=imperial",
+      type: "GET",
+      dataType: "JSON",
+      success: function(result)
+      {
+        get_weather();
+      },
+      error: function(xhr, ajaxOptions, thrownError){ 
+        console.log(xhr.status); 
+        console.log(thrownError);}
+      }); 
+    };
+          
+          
+  var container = document.getElementById("container");
+  container.appendChild(btn);
 }
 
 
