@@ -15,8 +15,8 @@
     ></script>
   </head>
 
-  <header>
-    <h1>Weather Dashboard</h1>
+  <header style = "display: flex;flex-direction: column; align-items: center; background-image: linear-gradient(to right, #2196f3, rgb(0, 0, 255));">
+    <h1 style = "color: white;">Weather Dashboard</h1>
   </header>
 
   <body>
@@ -25,12 +25,12 @@
   <div class = "col s3">
     <div id = "city_search_and_history">
       <form id="search-form" class="form">
-          <h1>Search for a City:</h1>
+          <h1 style = "font-size: 40px;">Search for a City:</h1>
           <input type="text" id="input" placeholder="Austin" name="city" maxlength="100"/>
-          <button id="Search" type="submit">Search</button>
       </form>
-      <!-- append the recent searched cities here as a button -->
-      <div class="divider"></div>
+      <button class = "btn blue" id="Search" style = "width:100%">Search</button>
+      <!-- append the recent searched cities here as a button class = "btn waves-effect waves-light #0096ff"-->
+      <div class="divider" style = "margin-top: 20px; margin-bottom: 20px;"></div>
     </div>
   </div>
 
@@ -38,53 +38,56 @@
     <!-- right side of the screen that will hold the forcast. -->
     <div id = "forcast">
       <!-- current forcast goes here -->
-      <div id = "current">
-        <h2 id = "city_date">City (current date)</h2>
-        <p>Temp: <span     id = "current_temp"    >cold </span> deg F</p>
-        <p>Wind: <span     id = "current_wind"    >calm </span> MPH</p>
-        <p>Humidity: <span id = "current_humidity">20%  </span> %</p>
-        <p>UV Index: <span id = "current_UV"      >0.34 </span> </p>
+      <div id = "current" class = "card-panel row">
+        <div class = "col s6">
+          <h2 id = "city_date">City </h2>
+          <p>Temp: <span     id = "current_temp"    >xxx </span> deg F</p>
+          <p>Wind: <span     id = "current_wind"    >xxx </span> MPH</p>
+          <p>Humidity: <span id = "current_humidity">xxx </span> %</p>
+          <p>UV Index: <span id = "current_UV"      >xxx </span> </p>
+        </div>
+        <img class = "col s2" id = "current_icon"src = http://openweathermap.org/img/wn/10d@2x.png>
       </div>
 
       <!-- five day forcast goes here -->
       <h3>5-Day Forecast:</h3>
       <div id ="five_day" class="row">
-        <div id = "day_1" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
-          <h4 id = "day_1_date">date</h4>
+        <div id = "day_1" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px; color:white">
+          <h4 id = "day_1_date" style = "font-size: 20px;">date</h4>
           <!-- icon here -->
-          <ion-icon id = "day_1_icon" name="cloudy" style="font-size:30px; color: white;"></ion-icon>
+          <img id = "day_1_icon" src = http://openweathermap.org/img/wn/10d.png>
           <p id = "day_1_temp">temp</p>
           <p id = "day_1_wind">wind</p>
           <p id = "day_1_humidity">humid</p>
         </div>
-        <div id = "day_2" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
-          <h4 id = "day_2_date">date</h4>
+        <div id = "day_2" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px; color:white">
+          <h4 id = "day_2_date" style = "font-size: 20px;">date</h4>
           <!-- icon here -->
-          <ion-icon id = "day_2_icon" name="rainy" style="font-size:30px; color: #636060;"></ion-icon>
+          <img id = "day_2_icon" src = http://openweathermap.org/img/wn/10d.png>
           <p id = "day_2_temp">temp</p>
           <p id = "day_2_wind">wind</p>
           <p id = "day_2_humidity">humid</p>
         </div>
-        <div id = "day_3" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
-          <h4 id = "day_3_date">date</h4>
+        <div id = "day_3" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px; color:white">
+          <h4 id = "day_3_date" style = "font-size: 20px;">date</h4>
           <!-- icon here -->
-          <ion-icon id = "day_3_icon" name="sunny" style="font-size:30px; color:orange"></ion-icon>
+          <img id = "day_3_icon" src = http://openweathermap.org/img/wn/10d.png>
           <p id = "day_3_temp">temp</p>
           <p id = "day_3_wind">wind</p>
           <p id = "day_3_humidity">humid</p>
         </div>
-        <div id = "day_4" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px;">
-          <h4 id = "day_4_date">date</h4>
+        <div id = "day_4" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style= "margin-right: 10px; color:white">
+          <h4 id = "day_4_date" style = "font-size: 20px;">date</h4>
           <!-- icon here -->
-          <ion-icon id = "day_4_icon" name="thunderstorm" style="font-size:30px; color: #636060;"></ion-icon>
+          <img id = "day_4_icon" src = http://openweathermap.org/img/wn/10d.png>
           <p id = "day_4_temp">temp</p>
           <p id = "day_4_wind">wind</p>
           <p id = "day_4_humidity">humid</p>
         </div>
-        <div id = "day_5" class = "card-panel #5c6bc0 indigo lighten-1 col s2">
-          <h4 id = "day_5_date">date</h4>
+        <div id = "day_5" class = "card-panel #5c6bc0 indigo lighten-1 col s2" style = "color:white">
+          <h4 id = "day_5_date" style = "font-size: 20px;">date</h4>
           <!-- icon here -->
-          <ion-icon id = "day_5_icon" name="cloudy" style="font-size:30px; color: white;"></ion-icon>
+          <img id = "day_5_icon" src = http://openweathermap.org/img/wn/10d.png>
           <p id = "day_5_temp">temp</p>
           <p id = "day_5_wind">wind</p>
           <p id = "day_5_humidity">humid</p>

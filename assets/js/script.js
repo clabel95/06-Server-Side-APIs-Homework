@@ -11,6 +11,7 @@ var today_temp = document.getElementById("current_temp");
 var today_wind = document.getElementById("current_wind");
 var today_humidity = document.getElementById("current_humidity");
 var today_uv = document.getElementById("current_UV");
+var today_icon = document.getElementById("current_icon")
 
 var d1_date = document.getElementById("day_1_date");
 var d1_icon = document.getElementById("day_1_icon");
@@ -57,6 +58,9 @@ document.querySelector("#Search").addEventListener("click", function(event){
 	  {
       localStorage.setItem(Search_City+"lat",result.coord.lat);
       localStorage.setItem(Search_City+"lon",result.coord.lon);
+
+      // code to create a button for each city searched. not sure how to go about this yet
+
       get_weather();
     },
 	error: function(xhr, ajaxOptions, thrownError){ 
@@ -83,6 +87,7 @@ function get_weather(){
       today_humidity.innerHTML = result.current.humidity;
       console.log(result.current.uvi);
       today_uv.innerHTML = result.current.uvi;
+      today_icon.src = "http://openweathermap.org/img/wn/"+ result.current.weather[0].icon +"@2x.png"
       
       console.log("--------------------------")
       //Day 1-------------------------------------------------------------------------------
@@ -90,12 +95,13 @@ function get_weather(){
       d1_date.innerHTML = moment(result.daily[1].dt , 'X').format('M/D/YYYY');
       console.log(result.daily[1].weather[0].main);
       // d1_icon. not sure how to change the icon yet.------------------------------------
+      d1_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[1].weather[0].icon +".png"
       console.log(result.daily[1].temp.day);
-      d1_temp.innerHTML = result.daily[1].temp.day;
+      d1_temp.innerHTML = "Temp: "+result.daily[1].temp.day + "°F";
       console.log(result.daily[1].wind_speed);
-      d1_wind.innerHTML = result.daily[1].wind_speed;
+      d1_wind.innerHTML = "Wind: "+result.daily[1].wind_speed +" MPH";
       console.log(result.daily[1].humidity);
-      d1_humi.innerHTML = result.daily[1].humidity;
+      d1_humi.innerHTML = "Humidity: "+result.daily[1].humidity +"%";
       //------------------------------------------------------------------------------------
       
       console.log("--------------------------")
@@ -105,16 +111,55 @@ function get_weather(){
       d2_date.innerHTML = moment(result.daily[2].dt , 'X').format('M/D/YYYY');
       console.log(result.daily[2].weather[0].main);
       // d2_icon. not sure how to change the icon yet.------------------------------------
+      d2_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[2].weather[0].icon +".png"
       console.log(result.daily[2].temp.day);
-      d2_temp.innerHTML = result.daily[2].temp.day;
+      d2_temp.innerHTML = "Temp: "+result.daily[2].temp.day + "°F";
       console.log(result.daily[2].wind_speed);
-      d2_wind.innerHTML = result.daily[2].wind_speed;
+      d2_wind.innerHTML = "Wind: "+result.daily[2].wind_speed +" MPH";
       console.log(result.daily[2].humidity);
-      d2_humi.innerHTML = result.daily[2].humidity;
+      d2_humi.innerHTML = "Humidity: "+result.daily[2].humidity +"%";
       //------------------------------------------------------------------------------------
 
+      //Day 3-------------------------------------------------------------------------------
+      console.log(result.daily[3].dt);
+      d3_date.innerHTML = moment(result.daily[3].dt , 'X').format('M/D/YYYY');
+      console.log(result.daily[3].weather[0].main);
+      // d3_icon. not sure how to change the icon yet.------------------------------------
+      d3_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[3].weather[0].icon +".png"
+      console.log(result.daily[3].temp.day);
+      d3_temp.innerHTML = "Temp: "+result.daily[3].temp.day + "°F";
+      console.log(result.daily[3].wind_speed);
+      d3_wind.innerHTML = "Wind: "+result.daily[3].wind_speed +" MPH";
+      console.log(result.daily[3].humidity);
+      d3_humi.innerHTML = "Humidity: "+result.daily[3].humidity +"%";
+      //------------------------------------------------------------------------------------
 
+      //Day 4-------------------------------------------------------------------------------
+      console.log(result.daily[4].dt);
+      d4_date.innerHTML = moment(result.daily[4].dt , 'X').format('M/D/YYYY');
+      console.log(result.daily[4].weather[0].main);
+      // d4_icon. not sure how to change the icon yet.------------------------------------
+      d4_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[4].weather[0].icon +".png"
+      console.log(result.daily[4].temp.day);
+      d4_temp.innerHTML = "Temp: "+result.daily[4].temp.day + "°F";
+      console.log(result.daily[4].wind_speed);
+      d4_wind.innerHTML = "Wind: "+result.daily[4].wind_speed +" MPH";
+      console.log(result.daily[4].humidity);
+      d4_humi.innerHTML = "Humidity: "+result.daily[4].humidity +"%";
+      //------------------------------------------------------------------------------------
 
+      //Day 5-------------------------------------------------------------------------------
+      console.log(result.daily[5].dt);
+      d5_date.innerHTML = moment(result.daily[5].dt , 'X').format('M/D/YYYY');
+      console.log(result.daily[5].weather[0].main);
+      d5_icon.src = "http://openweathermap.org/img/wn/"+ result.daily[5].weather[0].icon +".png" 
+      console.log(result.daily[5].temp.day);
+      d5_temp.innerHTML = "Temp: "+result.daily[5].temp.day + "°F";
+      console.log(result.daily[5].wind_speed);
+      d5_wind.innerHTML = "Wind: "+result.daily[5].wind_speed +" MPH";
+      console.log(result.daily[5].humidity);
+      d5_humi.innerHTML = "Humidity: "+result.daily[5].humidity +"%";
+      //------------------------------------------------------------------------------------
 
 
      
