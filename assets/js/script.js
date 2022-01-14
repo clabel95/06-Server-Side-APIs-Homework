@@ -1,4 +1,5 @@
 //set the text in the input to be whatever is stored in local storage.
+
 document.getElementById("input").value = localStorage.getItem("Search_City");
 
 //initialize and define all variables 
@@ -56,11 +57,64 @@ document.querySelector("#Search").addEventListener("click", function(event){
 	  dataType: "JSON",
 	  success: function(result)
 	  {
+
+      var myElement = document.getElementById(Search_City.toUpperCase());
+      
+
+
+      if(!myElement){
+        //doesnt exist yet
+        var btn = document.createElement("button");
+        btn.type = "button";
+        // Search_City = result.
+        btn.innerHTML = Search_City;
+        btn.id = Search_City.toUpperCase();
+        btn.className = "btn grey";
+        btn.style.width = "100%";
+        btn.style.margin = "5px";
+
+        btn.onclick = function(){
+          event.preventDefault();
+          //localStorage.setItem("Search_City", btn.value);
+          
+          //Search_City = this.value;
+          console.log("-----------------------")
+          console.log($(this)[0].innerHTML);
+          console.log("-----------------------")
+          Search_City = $(this)[0].innerHTML
+          $.ajax({
+            url: "https://salty-mountain-68764.herokuapp.com/api.openweathermap.org/data/2.5/weather?q=" + $(this)[0].innerHTML + "&appid=59a63259df023b7597639c43e89ae417&units=imperial",
+            type: "GET",
+            dataType: "JSON",
+            success: function(result)
+            {
+              get_weather();
+            },
+            error: function(xhr, ajaxOptions, thrownError){ 
+              console.log(xhr.status); 
+              console.log(thrownError);}
+            }); 
+          };
+          
+          
+        var container = document.getElementById("container");
+        container.appendChild(btn);
+        var total_btns = document.getElementById("container").childNodes;
+        var rem_btn = document.getElementById("container");
+
+        if(total_btns.length > 6){
+          rem_btn.removeChild(rem_btn.firstChild)
+        }
+
+
+
+        }
+      
       localStorage.setItem(Search_City+"lat",result.coord.lat);
       localStorage.setItem(Search_City+"lon",result.coord.lon);
 
       // code to create a button for each city searched. not sure how to go about this yet
-
+      
       get_weather();
     },
 	error: function(xhr, ajaxOptions, thrownError){ 
@@ -78,15 +132,34 @@ function get_weather(){
 	  success: function(result)
 	  {
       console.log(result);
-      today_city.innerHTML = Search_City +" "+ moment(result.current.dt, 'X' ).format('M/D/YYYY');
+      today_city.innerHTML = Search_City.toUpperCase() +" "+ moment(result.current.dt, 'X' ).format('M/D/YYYY');
       console.log(result.current.temp);
       today_temp.innerHTML = result.current.temp;
       console.log(result.current.wind_speed);
       today_wind.innerHTML = result.current.wind_speed;
       console.log(result.current.humidity);
       today_humidity.innerHTML = result.current.humidity;
-      console.log(result.current.uvi);
+      console.log("uv " + parseInt(result.current.uvi) );
       today_uv.innerHTML = result.current.uvi;
+
+
+
+      switch(parseInt(result.current.uvi)){
+        case 0: today_uv.style.backgroundColor = "#00a500"; break;
+        case 1: today_uv.style.backgroundColor = "#00a500"; break;
+        case 2: today_uv.style.backgroundColor = "#00a500"; break;
+        case 3: today_uv.style.backgroundColor = "#ee8700"; break;
+        case 4: today_uv.style.backgroundColor = "#ee8700"; break;
+        case 5: today_uv.style.backgroundColor = "#ee8700"; break;
+        case 6: today_uv.style.backgroundColor = "#ee8700"; break;
+        case 7: today_uv.style.backgroundColor = "#ee8700"; break;
+        case 8: today_uv.style.backgroundColor = "#da0000"; break;
+        case 9: today_uv.style.backgroundColor = "#da0000"; break;
+        default: today_uv.style.backgroundColor = "#da0000"; break;
+      }
+      
+
+
       today_icon.src = "http://openweathermap.org/img/wn/"+ result.current.weather[0].icon +"@2x.png"
       
       console.log("--------------------------")

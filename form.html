@@ -27,10 +27,13 @@
       <form id="search-form" class="form">
           <h1 style = "font-size: 40px;">Search for a City:</h1>
           <input type="text" id="input" placeholder="Austin" name="city" maxlength="100"/>
+          <button class = "btn blue" id="Search" style = "width:100%">Search</button>
       </form>
-      <button class = "btn blue" id="Search" style = "width:100%">Search</button>
-      <!-- append the recent searched cities here as a button class = "btn waves-effect waves-light #0096ff"-->
+      
+      <!-- append the recent searched cities here as a button-->
       <div class="divider" style = "margin-top: 20px; margin-bottom: 20px;"></div>
+      <div id = "container"></div>
+
     </div>
   </div>
 
@@ -44,7 +47,7 @@
           <p>Temp: <span     id = "current_temp"    >xxx </span> deg F</p>
           <p>Wind: <span     id = "current_wind"    >xxx </span> MPH</p>
           <p>Humidity: <span id = "current_humidity">xxx </span> %</p>
-          <p>UV Index: <span id = "current_UV"      >xxx </span> </p>
+          <p>UV Index: <span id = "current_UV" style = "padding:8px; color:white"     >xxx </span> </p>
         </div>
         <img class = "col s2" id = "current_icon"src = http://openweathermap.org/img/wn/10d@2x.png>
       </div>
