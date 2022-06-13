@@ -1,8 +1,8 @@
 # 06 Server Side APIs: Weather Dashboard
-[Link to the live page](https://clabel95.github.io/06-Server-Side-APIs-Homework/)
+[Link to the live page](https://clabel95.github.io/Weather-Dashboard/)
 
 
-[Link to the github repository](https://github.com/clabel95/06-Server-Side-APIs-Homework)
+[Link to the github repository](https://github.com/clabel95/Weather-Dashboard)
 
 ## My task
 
